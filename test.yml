@@ -1,0 +1,14 @@
+---
+    - name: playbook to check Total and detail ISCSI disk 
+      hosts: all 
+      become_user: root
+      tasks:
+         - name: Check the ISCSI disk in details
+           shell: lsscsi -sgd | grep -i disk && echo "Total disk = $(lsscsi | grep -i disk| wc -l)"
+           register: scsi 
+           
+         - name: debugging the message ISCSI 
+           debug: 
+             var: scsi.stdout_lines
+
+
