@@ -10,5 +10,11 @@
          - name: debugging the message ISCSI 
            debug: 
              var: scsi.stdout_lines
-
-
+        
+         - name: VGS run
+           shell: vgs
+           register: vgsoutput
+           
+         - name: debugging the message vgs
+           debug: 
+             var: vgsoutput.stdout_lines
